@@ -19,6 +19,10 @@ module Line
         }
       end
 
+      def credentials?
+        credentials.values.all?
+      end
+
       def user_agent
         "LineBotGem/#{Line::Bot::VERSION}"
       end

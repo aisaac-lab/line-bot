@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["gogotanaka"]
   spec.email         = ["mail@tanakakazuki.com"]
 
-  spec.summary       = %q{A Ruby interface to Line Bot API.}
-  spec.description   = %q{A Ruby interface to Line Bot API.}
+  spec.summary       = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
+  spec.description   = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
   spec.homepage      = "http://aisaac.in/"
   spec.license       = "MIT"
 

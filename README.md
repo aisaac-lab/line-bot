@@ -22,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+client = Line::Bot::Client.new do |config|
+  config.channel_id     = "LINE_CHANNEL_ID"
+  config.channel_secret = "LINE_CHANNEL_SECRET"
+  config.channel_mid    = "LINE_CHANNEL_MID"
+end
+
+client.get_profiles(mids: "uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+```
+
 
 ## Development
 
@@ -38,4 +47,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

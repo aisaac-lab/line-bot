@@ -3,34 +3,30 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'line/bot/version'
 
-Gem::Specification.new do |spec|
-  spec.name          = "line-bot"
-  spec.version       = Line::Bot::VERSION
-  spec.authors       = ["gogotanaka"]
-  spec.email         = ["mail@tanakakazuki.com"]
+Gem::Specification.new do |s|
+  s.name             = "line-bot"
+  s.version          = Line::Bot::VERSION
+  s.authors          = ["gogotanaka"]
+  s.email            = ["t@aisaac.in"]
+  s.executables      = ['line-bot']
+  s.extra_rdoc_files = ['README.md', 'CHANGELOG']
+  s.files            = `git ls-files -z`.split("\x0")
+  s.test_files       = `git ls-files -z test/`.split("\0")
 
-  spec.summary       = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
-  spec.description   = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
-  spec.homepage      = "http://aisaac.in/"
-  spec.license       = "MIT"
+  s.summary          = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
+  s.description      = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
+  s.homepage         = "https://github.com/AI-saac/line-bot"
+  s.license          = "MIT"
 
-  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
-  # delete this section to allow pushing this gem to any host.
-  # if spec.respond_to?(:metadata)
-  #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  # else
-  #   raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  # end
+  s.bindir           = "exe"
+  s.require_paths    = ["lib"]
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  s.post_install_message = "Thanks for installing!"
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  s.add_development_dependency "bundler", "~> 1.11"
+  s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency "minitest", "~> 5.0"
 
-  spec.add_runtime_dependency "faraday"
-  spec.add_runtime_dependency "faraday_middleware"
+  s.add_runtime_dependency "faraday"
+  s.add_runtime_dependency "faraday_middleware"
 end

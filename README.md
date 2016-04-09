@@ -17,7 +17,7 @@ client = Line::Bot::Client.new do |config|
   config.channel_mid    = "LINE_CHANNEL_MID"
 end
 
-client.get_profiles(mids: "uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+client.get_profiles(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
 ```
 
 ## Development

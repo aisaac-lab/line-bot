@@ -1,11 +1,15 @@
 require 'line/bot/request'
 
+require 'line/bot/api/profile'
+require 'line/bot/api/retrieve_message'
+require 'line/bot/api/send_message'
+
 module Line
   module Bot
     module API
-      def get_profiles(options = {})
-        perform_request(:get, '/v1/profiles', options)
-      end
+      include Line::Bot::API::Profile
+      include Line::Bot::API::RetrieveMessage
+      include Line::Bot::API::SendMessage
 
       private
         def perform_request(request_method, path, options)

@@ -1,7 +1,11 @@
+require 'line/bot/constants'
+
 module Line
   module Bot
     module API
       module SendMessage
+        include Line::Bot::Constants
+
         # @param mids [String]
         # @param text_message String
         def send_text(mids, text_message)

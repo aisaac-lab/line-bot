@@ -31,4 +31,6 @@ class Line::Bot::RequestTest < Minitest::Test
       response[:body]
     )
   end
+
+  # :status=>400, :body=>{"statusCode"=>"422", "statusMessage"=>"empty content."}}
 end

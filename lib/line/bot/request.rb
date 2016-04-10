@@ -21,6 +21,11 @@ module Line
           req.url @path
           req.headers = Line::Bot::Headers.new(@client, @request_method, @uri).request_headers
           req.params = @options
+          if @request_method == :get
+            req.params = @options unless @options == {}
+          else
+            req.body = @options.to_json
+          end
         end
 
         {

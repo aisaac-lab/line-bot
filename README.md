@@ -18,6 +18,8 @@ client = Line::Bot::Client.new do |config|
 end
 
 client.get_profiles(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
+
+client.send_text(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"], "Hello, world!")
 ```
 
 ## Development
@@ -27,6 +29,8 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/Ai-saac/line-bot.
+
+I'm open to any suggestions :) Please feel free to open issues!
 
 ## License
 

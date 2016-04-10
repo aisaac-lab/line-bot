@@ -22,7 +22,11 @@ module Line
           req.headers = Line::Bot::Headers.new(@client, @request_method, @uri).request_headers
           req.params = @options
         end
-        response.body
+
+        {
+          status: response.status,
+          body: response.body
+        }
       end
 
       private

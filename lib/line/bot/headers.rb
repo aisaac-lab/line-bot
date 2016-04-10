@@ -9,7 +9,7 @@ module Line
       end
 
       def request_headers
-        headers = {
+        {
           'User-Agent'                   => @client.user_agent,
           'Content-Type'                 => 'application/json; charset=UTF-8',
           'X-Line-ChannelID'             => @client.channel_id,

@@ -5,7 +5,7 @@ module Line
         # @param mids [String]
         # @param text_message String
         def send_text(mids, text_message)
-          perform_request(:post, '/v1/events', {
+          perform_post_request '/v1/events', {
             to: mids,
             content: {
               contentType: ContentType::TEXT,
@@ -14,7 +14,7 @@ module Line
             },
             toChannel: POST_EVENT_API_CHANEL_ID,
             eventType: EventType::POST_EVENT_API
-          })
+          }
         end
       end
     end

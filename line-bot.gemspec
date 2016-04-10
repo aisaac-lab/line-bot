@@ -23,9 +23,9 @@ Gem::Specification.new do |s|
 
   s.post_install_message = "Thanks for installing!"
 
-  s.add_development_dependency "bundler", "~> 1.11"
-  s.add_development_dependency "rake", "~> 10.0"
-  s.add_development_dependency "minitest", "~> 5.0"
+  s.add_development_dependency 'bundler', ['>= 1.0.0']
+  s.add_development_dependency 'rake', ['>= 0']
+  s.add_development_dependency "minitest", ['>= 0']
 
   s.add_runtime_dependency "faraday"
   s.add_runtime_dependency "faraday_middleware"

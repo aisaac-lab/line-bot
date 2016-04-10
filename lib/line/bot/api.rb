@@ -1,4 +1,5 @@
 require 'line/bot/request'
+require 'line/bot/constants'
 
 require 'line/bot/api/profile'
 require 'line/bot/api/retrieve_message'
@@ -7,6 +8,8 @@ require 'line/bot/api/send_message'
 module Line
   module Bot
     module API
+      include Line::Bot::Constants
+
       include Line::Bot::API::Profile
       include Line::Bot::API::RetrieveMessage
       include Line::Bot::API::SendMessage

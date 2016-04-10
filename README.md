@@ -45,7 +45,35 @@ client.get_message_content("1460267791059")
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rake` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+#### Setup
+
+```
+$ bundle install --path vendor/bundle
+
+# Option 1
+$ cp .envrc.sample .envrc
+
+( update .envrc as your configs )
+
+$ direnv allow .
+
+# Option 2
+$ export LINE_CHANNEL_ID=xxxxxxx
+$ export LINE_CHANNEL_SECRET=xxxxxxx
+$ export LINE_CHANNEL_MID=xxxxxxx
+```
+
+#### run test
+
+```
+$ bundle exec test
+```
+
+#### Try it in console
+
+```
+$ bin/console
+```
 
 ## Contributing
 

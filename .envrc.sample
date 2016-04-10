@@ -1,0 +1,3 @@
+export LINE_CHANNEL_ID=xxxxxxxx
+export LINE_CHANNEL_SECRET=xxxxxxx
+export LINE_CHANNEL_MID=xxxxxxx

@@ -2,23 +2,23 @@ require 'test_helper'
 
 class Line::Bot::ApiTest < Minitest::Test
   def setup
-    @mids = [ENV["LINE_CHANNEL_MID"]]
+    @sample_mids = ["u309c9dcccb65b69c8dcdfc52f391aa02"]
     @sample_messageId = "1460267200057"
   end
 
   def test_get_profiles
-    response = $client.get_profiles(@mids)
+    response = $client.get_profiles(@sample_mids)
 
     assert_equal 200, response[:status]
     refute_nil response[:body]["contacts"]
   end
 
   def test_send_text
-    response = $client.send_text(["u309c9dcccb65b69c8dcdfc52f391aa02"], "Hello world")
+    response = $client.send_text(@sample_mids, "Hello world")
     assert_equal 200, response[:status]
     refute_nil response[:body]["messageId"]
 
-    response = $client.send_text(["u309c9dcccb65b69c8dcdfc52f391aa02"], "")
+    response = $client.send_text(@sample_mids, "")
     assert_equal 400, response[:status]
     assert_equal(
       {"statusCode"=>"422", "statusMessage"=>"text can not be empty for this content type : TEXT"},

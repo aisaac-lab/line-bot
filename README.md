@@ -11,6 +11,8 @@ A lightweight, flexible Ruby interface to the Line Bot API.
 ## Usage
 
 ```ruby
+require 'line/bot/client'
+
 client = Line::Bot::Client.new do |config|
   config.channel_id     = "LINE_CHANNEL_ID"
   config.channel_secret = "LINE_CHANNEL_SECRET"
@@ -18,8 +20,27 @@ client = Line::Bot::Client.new do |config|
 end
 
 client.get_profiles(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
+# => {
+# :status=>200,
+# :body=>{"contacts"=>[{"displayName"=>"Aisaac", "mid"=>"uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "pictureUrl"=>"",# "statusMessage"=>""}],
+#   "count"=>1,
+#   "display"=>1,
+#   "pagingRequest"=>{"start"=>1, "display"=>1, "sortBy"=>"MID"},
+#   "start"=>1,
+#   "total"=>1}
+# }
 
 client.send_text(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"], "Hello, world!")
+#=> {:status=>200, :body=>{"failed"=>[], "messageId"=>"1460267791059", "timestamp"=>1460267791059, "version"=>1}}
+
+client.get_message_content("1460267791059")
+# => {
+# :status=>200,
+# :body=> {"result":[
+#     {
+#       "content":{
+#         "toType":1,
+#         ...
 ```
 
 ## Development

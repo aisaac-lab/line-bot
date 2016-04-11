@@ -1,6 +1,20 @@
 require 'test_helper'
 
 class Line::Bot::RequestTest < Minitest::Test
+  # TODO: need to be more proper
+  def test_proxy
+    @http_client = Faraday.new(url: 'https://api.ipify.org?format=json', ssl: { verify: false }) do |conn|
+      conn.request :json
+      conn.response :json, :content_type => /\bjson$/
+      conn.adapter Faraday.default_adapter
+      if $client_with_proxy.proxy
+        conn.proxy $client_with_proxy.proxy
+      end
+    end
+    res = @http_client.get '/'
+    assert $client_with_proxy.proxy.include?(res.body["ip"])
+  end
+
   def test_perform_200
     response = Line::Bot::Request.new($client, :get, '/v1/profiles', { mids: ENV["LINE_CHANNEL_MID"] }).perform
 

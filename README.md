@@ -22,25 +22,29 @@ end
 client.get_profiles(["array_of_mids_of_user"])
 # => {
 # :status=>200,
-# :body=>{"contacts"=>[{"displayName"=>"Aisaac", "mid"=>"uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "pictureUrl"=>"",# "statusMessage"=>""}],
-#   "count"=>1,
-#   "display"=>1,
-#   "pagingRequest"=>{"start"=>1, "display"=>1, "sortBy"=>"MID"},
-#   "start"=>1,
-#   "total"=>1}
-# }
+# :body=>{"contacts"=>[{"displayName"=>"Aisaac", ...
 
 client.send_text(["array_of_mids_of_target_recipient"], text: "Hello world")
-#=> {:status=>200, :body=>{"failed"=>[], "messageId"=>"1460267791059", "timestamp"=>1460267791059, "version"=>1}}
+#=> {
+# :status=>200,
+# :body=>{"failed"=>[], "messageId"=>"1460267791059", "timestamp"=>1460267791059...
 
 client.get_message_content("1460267791059")
 # => {
 # :status=>200,
-# :body=> {"result":[
-#     {
-#       "content":{
-#         "toType":1,
-#         ...
+# :body=> {"result":[{"content":{...
+```
+
+#### With proxy
+```ruby
+client = Line::Bot::Client.new do |config|
+  config.channel_id     = "LINE_CHANNEL_ID"
+  config.channel_secret = "LINE_CHANNEL_SECRET"
+  config.channel_mid    = "LINE_CHANNEL_MID"
+  config.proxy          = "http://proxy.example.com/"
+end
+
+client.get_profiles(["array_of_mids_of_user"])
 ```
 
 ## Development

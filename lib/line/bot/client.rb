@@ -5,7 +5,7 @@ module Line
   module Bot
     class Client
       include Line::Bot::API
-      attr_accessor :channel_id, :channel_secret, :channel_mid
+      attr_accessor :channel_id, :channel_secret, :channel_mid, :proxy
 
       def initialize
         yield(self) if block_given?

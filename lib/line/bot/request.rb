@@ -20,7 +20,6 @@ module Line
         response = http_client.send(@request_method) do |req|
           req.url @path
           req.headers = Line::Bot::Headers.new(@client, @request_method, @uri).request_headers
-          req.params = @options
           if @request_method == :get
             req.params = @options unless @options == {}
           else
@@ -36,11 +35,13 @@ module Line
 
       private
         def http_client
-          @http_client ||= Faraday.new(url: BASE_URL) do |conn|
+          @http_client ||= Faraday.new(url: BASE_URL, ssl: { verify: false }) do |conn|
             conn.request :json
             conn.response :json, :content_type => /\bjson$/
             conn.adapter Faraday.default_adapter
-            conn.proxy @proxy
+            if @client.proxy
+              conn.proxy @client.proxy
+            end
           end
         end
     end

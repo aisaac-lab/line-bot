@@ -70,4 +70,41 @@ class Line::Bot::API::SendContentTest < Minitest::Test
       response[:body]
     )
   end
+
+  def test_send_audio
+    response = $client.send_audio(@sample_mids,
+      originalContentUrl: "http://example.com/original.m4a",
+      contentMetadata: {
+        "AUDLEN" => "240000"
+      }
+    )
+    assert_equal 200, response[:status]
+    refute_nil response[:body]["messageId"]
+  end
+
+  def test_send_location
+    response = $client.send_location(@sample_mids,
+      text: "Hi!",
+      location: {
+        title: "Convention center",
+        latitude: 35.61823286112982,
+        longitude: 139.72824096679688
+      }
+    )
+    assert_equal 200, response[:status]
+    refute_nil response[:body]["messageId"]
+  end
+
+  def test_send_sticker
+    response = $client.send_sticker(@sample_mids,
+      contentMetadata: {
+        wrong_params: "xxx"
+      }
+    )
+    assert_equal 400, response[:status]
+    assert_equal(
+      {"statusCode"=>"542", "statusMessage"=>"BOT_INVALID_PARAMETER"},
+      response[:body]
+    )
+  end
 end

@@ -7,6 +7,7 @@ module Line
           perform_get_request "/v1/bot/message/#{messageId}/content", {}
         end
 
+        # @param messageId String or Integer
         def get_message_content_preview(messageId)
           perform_get_request "/v1/bot/message/#{messageId}/content/preview", {}
         end

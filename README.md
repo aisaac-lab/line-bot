@@ -117,7 +117,7 @@ $ bin/console
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Ai-saac/line-bot.
+Bug reports and pull requests are welcome on GitHub at https://github.com/aisaac-lab/line-bot.
 
 I'm open to any suggestions :) Please feel free to open issues!
 

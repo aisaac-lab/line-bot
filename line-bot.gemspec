@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.summary          = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
   s.description      = %q{ A lightweight, flexible Ruby interface to the Line Bot API. }
-  s.homepage         = "https://github.com/AI-saac/line-bot"
+  s.homepage         = "https://github.com/aisaac-lab/line-bot"
   s.license          = "MIT"
 
   s.bindir           = "exe"

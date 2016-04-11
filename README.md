@@ -19,7 +19,7 @@ client = Line::Bot::Client.new do |config|
   config.channel_mid    = "LINE_CHANNEL_MID"
 end
 
-client.get_profiles(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
+client.get_profiles(["array_of_mids_of_user"])
 # => {
 # :status=>200,
 # :body=>{"contacts"=>[{"displayName"=>"Aisaac", "mid"=>"uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "pictureUrl"=>"",# "statusMessage"=>""}],
@@ -30,7 +30,7 @@ client.get_profiles(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
 #   "total"=>1}
 # }
 
-client.send_text(["uxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"], "Hello, world!")
+client.send_text(["array_of_mids_of_target_recipient"], text: "Hello world")
 #=> {:status=>200, :body=>{"failed"=>[], "messageId"=>"1460267791059", "timestamp"=>1460267791059, "version"=>1}}
 
 client.get_message_content("1460267791059")

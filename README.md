@@ -17,6 +17,7 @@ client = Line::Bot::Client.new do |config|
   config.channel_id     = "LINE_CHANNEL_ID"
   config.channel_secret = "LINE_CHANNEL_SECRET"
   config.channel_mid    = "LINE_CHANNEL_MID"
+  config.proxy          = "http://proxy.example.com/" # Optional
 end
 
 client.get_profiles(["array_of_mids_of_user"])
@@ -35,16 +36,51 @@ client.get_message_content("1460267791059")
 # :body=> {"result":[{"content":{...
 ```
 
-#### With proxy
+#### all examples
 ```ruby
-client = Line::Bot::Client.new do |config|
-  config.channel_id     = "LINE_CHANNEL_ID"
-  config.channel_secret = "LINE_CHANNEL_SECRET"
-  config.channel_mid    = "LINE_CHANNEL_MID"
-  config.proxy          = "http://proxy.example.com/"
-end
+client.send_text(["uxxxxxxxxxxxxx"],
+  text: "Hi!"
+)
 
-client.get_profiles(["array_of_mids_of_user"])
+client.send_image(["uxxxxxxxxxxxxx"],
+  originalContentUrl: "http://example.com/original.jpg",
+  previewImageUrl: "http://example.com/preview.jpg"
+)
+
+client.send_video(["uxxxxxxxxxxxxx"],
+  originalContentUrl: "http://example.com/original.jpg",
+  previewImageUrl: "http://example.com/preview.jpg"
+)
+
+client.send_audio(["uxxxxxxxxxxxxx"],
+  originalContentUrl: "http://example.com/original.m4a",
+  contentMetadata: {
+    "AUDLEN" => "240000"
+  }
+)
+
+client.send_location(["uxxxxxxxxxxxxx"],
+  text: "Hi!",
+  location: {
+    title: "Convention center",
+    latitude: 35.61823286112982,
+    longitude: 139.72824096679688
+  }
+)
+
+client.send_sticker(["uxxxxxxxxxxxxx"],
+  contentMetadata: {
+    "STKID" => "3",
+    "STKPKGID" => "332",
+    "STKVER" => "100" # Optional
+  }
+)
+
+client.get_profiles(["uxxxxxxxxxxxxx"])
+
+client.get_message_content("1460267791059")
+
+client.get_message_content_preview("1460267791059")
 ```
 
 ## Development

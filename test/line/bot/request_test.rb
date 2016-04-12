@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class Line::Bot::RequestTest < Minitest::Test
+  def setup
+    @proxy_ip = "54.175.230.252"
+  end
   # TODO: need to be more proper
   def test_proxy
     @http_client = Faraday.new(url: 'https://api.ipify.org?format=json', ssl: { verify: false }) do |conn|
@@ -12,7 +15,7 @@ class Line::Bot::RequestTest < Minitest::Test
       end
     end
     res = @http_client.get '/'
-    assert $client_with_proxy.proxy.include?(res.body["ip"])
+    assert_equal @proxy_ip, res.body["ip"]
   end
 
   def test_perform_200

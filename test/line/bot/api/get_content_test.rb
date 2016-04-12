@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Line::Bot::API::GetContentTest < Minitest::Test
   def setup
-    @sample_mids = ["u309c9dcccb65b69c8dcdfc52f391aa02"]
+    @sample_mids = ["u309c9dcccb65b69c8dcdfc52f391aa03"]
   end
 
   def test_get_message

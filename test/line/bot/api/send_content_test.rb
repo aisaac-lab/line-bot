@@ -2,7 +2,8 @@ require 'test_helper'
 
 class Line::Bot::API::SendContentTest < Minitest::Test
   def setup
-    @sample_mids = ["u309c9dcccb65b69c8dcdfc52f391aa02"]
+    @sample_mids = ["u8991f6c6c26e247ea6a33fbc143226dd"]
+    @sample_image_url = "http://aisaac.in//img/logo_white.png"
   end
 
   def test_send_text
@@ -27,8 +28,8 @@ class Line::Bot::API::SendContentTest < Minitest::Test
 
   def test_send_image
     response = $client.send_image(@sample_mids,
-      originalContentUrl: "http://example.com/original.jpg",
-      previewImageUrl: "http://example.com/preview.jpg"
+      originalContentUrl: @sample_image_url,
+      previewImageUrl: @sample_image_url
     )
     assert_equal 200, response[:status]
     refute_nil response[:body]["messageId"]
@@ -51,7 +52,7 @@ class Line::Bot::API::SendContentTest < Minitest::Test
   def test_send_video
     response = $client.send_video(@sample_mids,
       originalContentUrl: "http://example.com/original.jpg",
-      previewImageUrl: "http://example.com/preview.jpg"
+      previewImageUrl: @sample_image_url
     )
     assert_equal 200, response[:status]
     refute_nil response[:body]["messageId"]
@@ -96,6 +97,16 @@ class Line::Bot::API::SendContentTest < Minitest::Test
   end
 
   def test_send_sticker
+    response = $client.send_sticker(@sample_mids,
+      contentMetadata: {
+        "STKVER"=>"100",
+        "STKID"=>"140",
+        "STKPKGID"=>"2"
+      }
+    )
+    assert_equal 200, response[:status]
+    refute_nil response[:body]["messageId"]
+
     response = $client.send_sticker(@sample_mids,
       contentMetadata: {
         wrong_params: "xxx"

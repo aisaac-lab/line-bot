@@ -83,6 +83,44 @@ client.get_message_content("1460267791059")
 client.get_message_content_preview("1460267791059")
 ```
 
+#### From Commandline
+
+```
+$ line-bot help
+line-bot commands:
+  line-bot get_message_context MESSAGE_ID           # get message context of MESSAGE_ID
+  line-bot get_profiles MID                         # get profile for MID
+  line-bot help [COMMAND]                           # Describe available commands or one specific command
+  line-bot send_text MIDS_OF_TARGET_RECIPIENT TEXT  # send TEXT to MIDS_OF_TARGET_RECIPIENT
+$ export LINE_CHANNEL_ID=xxxxxxx
+$ export LINE_CHANNEL_SECRET=xxxxxxx
+$ export LINE_CHANNEL_MID=xxxxxxx
+$ export PROXY=xxxxxxxx
+$ line-bot get_profiles uxxxxxxxxxxxxx
+{
+  "status": 200,
+  "body": {
+    "contacts": [
+      {
+        "displayName": "xxxx",
+        "mid": "uxxxxxxxxxxxxx",
+        "pictureUrl": "",
+        "statusMessage": ""
+      }
+    ],
+    "count": 1,
+    "display": 1,
+    "pagingRequest": {
+      "start": 1,
+      "display": 1,
+      "sortBy": "MID"
+    },
+    "start": 1,
+    "total": 1
+  }
+}
+```
+
 ## Development
 
 #### Setup

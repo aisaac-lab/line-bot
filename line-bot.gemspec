@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', ['>= 0']
   s.add_development_dependency "minitest", ['>= 0']
 
+  s.add_runtime_dependency "thor"
   s.add_runtime_dependency "faraday"
   s.add_runtime_dependency "faraday_middleware"
 end

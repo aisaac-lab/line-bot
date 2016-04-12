@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
+require 'optparse'
+require 'line/bot/client'
+require 'line/bot/cli'
 
-require "line/bot"
+Line::Bot::Cli.start(ARGV.dup)

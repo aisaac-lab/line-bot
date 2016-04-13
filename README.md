@@ -10,6 +10,8 @@ A lightweight, flexible Ruby interface to the Line Bot API.
 
 ## Usage
 
+Api client usage.
+
 ```ruby
 require 'line/bot/client'
 
@@ -34,6 +36,21 @@ client.get_message_content("1460267791059")
 # => {
 # :status=>200,
 # :body=> {"result":[{"content":{...
+```
+
+Bot daemon useage.
+
+```ruby
+require 'line/bot/daemon'
+
+Line::Bot::Daemon.run(channel_id: ENV['LINE_CHANNEL_ID'],
+                      channel_secret: ENV['LINE_CHANNEL_SECRET'],
+                      channel_mid: ENV['LINE_CHANNEL_MID'],
+                      proxy: ENV['PROXY']) do |bot|
+  bot.listen do |message|
+    bot.api.send_text([message.content.from], text: message.content.text)
+  end
+end
 ```
 
 #### all examples

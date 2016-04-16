@@ -1,3 +1,5 @@
+require 'uri'
+
 module Line
   module Bot
     class Headers

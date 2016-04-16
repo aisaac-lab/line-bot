@@ -4,8 +4,6 @@ require 'line/bot/constants'
 module Line
   module Bot
     class Daemon
-      attr_accessor :api
-
       # @param [Hash] args
       # @option args [String] :channel_id Line channel id. Required.
       # @option args [String] :channel_secret Line channel secret. Required.
@@ -14,12 +12,8 @@ module Line
       # @option args [String] :port Port for callback request from line server. By Default: 3000.
       # @option args [String] :bind Bind address for callback request from line server. By default: "0.0.0.0".
       # @option args [String] :callback_path Callback entrypoint path used to send request to line's api server. By default: "/linebot/callback".
-      def self.run(args, &block)
-        new(args).run(&block)
-      end
-
       def initialize(args = {})
-        @api = Client.new do |config|
+        @clent = Client.new do |config|
           config.channel_id     = args[:channel_id]
           config.channel_secret = args[:channel_secret]
           config.channel_mid    = args[:channel_mid]
@@ -28,12 +22,8 @@ module Line
         @serv = Server.new args
       end
 
-      def run
-        yield self if block_given?
-      end
-
-      def listen(&block)
-        @serv.listen &block
+      def run(&block)
+        block.call(@serv, @clent)
       end
     end
   end

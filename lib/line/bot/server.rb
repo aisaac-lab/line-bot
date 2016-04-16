@@ -17,10 +17,6 @@ module Line
         @channel_mid    = args[:channel_mid]
       end
 
-      def self.listen(args, &block)
-        new(args).listen &block
-      end
-
       def listen &block
         @serv = WEBrick::HTTPServer.new(BindAddress: @bind, Port: @port)
         @serv.mount_proc(@callback_path) do |request, response|

@@ -1,0 +1,12 @@
+## 0.0.6
+
+### Feature
+
+* Now support sending multi messages
+
+
+## 0.0.5
+
+### Bug fix
+
+* Fix missing "require 'uri'"

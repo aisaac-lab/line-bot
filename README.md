@@ -76,6 +76,18 @@ client.send_sticker(["uxxxxxxxxxxxxx"],
   }
 )
 
+client.send_messages(["uxxxxxxxxxxxxx"], [
+  {
+    contentType: Line::Bot::Constants::ContentType::TEXT,
+    text: "First message"
+  },
+  {
+    contentType: Line::Bot::Constants::ContentType::IMAGE,
+    originalContentUrl: "http://example.com/original.jpg",
+    previewImageUrl: "http://example.com/original.jpg"
+  }
+])
+
 client.get_profiles(["uxxxxxxxxxxxxx"])
 
 client.get_message_content("1460267791059")

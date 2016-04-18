@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Line::Bot::API::SendContentTest < Minitest::Test
   def setup
-    @sample_mids = ["u8991f6c6c26e247ea6a33fbc143226dd"]
+    @sample_mids = [ENV["LINE_SAMPLE_CHANNEL_MID"]]
     @sample_image_url = "http://aisaac.in//img/logo_white.png"
   end
 
@@ -117,5 +117,21 @@ class Line::Bot::API::SendContentTest < Minitest::Test
       {"statusCode"=>"542", "statusMessage"=>"BOT_INVALID_PARAMETER"},
       response[:body]
     )
+  end
+
+  def test_send_messages
+    response = $client.send_messages(@sample_mids, [
+      {
+        contentType: Line::Bot::Constants::ContentType::TEXT,
+        text: "First message"
+      },
+      {
+        contentType: Line::Bot::Constants::ContentType::IMAGE,
+        originalContentUrl: "http://example.com/original.jpg",
+        previewImageUrl: @sample_image_url
+      }
+    ])
+    assert_equal 200, response[:status]
+    refute_nil response[:body]["messageId"]
   end
 end

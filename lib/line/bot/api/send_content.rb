@@ -55,6 +55,20 @@ module Line
         def send_sticker(mids, content_params)
           perform_sending_message_request(mids, ContentType::STICKER, content_params)
         end
+
+        # @param mids [String]
+        # @param [[Hash]] Array of content_params
+        def send_messages(mids, array_of_content_params)
+          perform_post_request '/v1/events', {
+            to: mids,
+            content: {
+              messageNotified: 0,
+              messages: array_of_content_params
+            },
+            toChannel: POST_EVENT_API_CHANEL_ID,
+            eventType: EventType::POST_MULTI_MESSAGE
+          }
+        end
       end
 
       private

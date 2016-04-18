@@ -10,8 +10,8 @@ class Line::Bot::RequestTest < Minitest::Test
       conn.request :json
       conn.response :json, :content_type => /\bjson$/
       conn.adapter Faraday.default_adapter
-      if $client_with_proxy.proxy
-        conn.proxy $client_with_proxy.proxy
+      if $client.proxy
+        conn.proxy $client.proxy
       end
     end
     res = @http_client.get '/'

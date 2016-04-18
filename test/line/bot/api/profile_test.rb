@@ -2,8 +2,8 @@ require 'test_helper'
 
 class Line::Bot::API::ProfileTest < Minitest::Test
   def setup
-    @sample_mids = ["u309c9dcccb65b69c8dcdfc52f391aa0a"]
-    @sample_multi_mids = ["u8991f6c6c26e247ea6a33fbc143226de", "uab0e0158e0214202b7302f11276d2edc"]
+    @sample_mids = [ENV["LINE_SAMPLE_CHANNEL_MID"]]
+    @sample_multi_mids = [ENV["LINE_SAMPLE_CHANNEL_MID"], ENV["LINE_CHANNEL_MID"]]
   end
 
   def test_get_profiles
